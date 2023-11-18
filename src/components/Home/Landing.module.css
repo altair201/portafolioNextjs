@@ -1,0 +1,116 @@
+.containerHome{
+    height: 90vh;
+    
+}
+.subcontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+}
+.photo{
+    height: 240px;
+    width: 240px;
+    overflow: hidden;
+    animation: bordeanime 10s linear infinite, shadowanime 10s linear infinite;
+}
+@keyframes bordeanime {
+    0%{
+        border-radius: 63% 37% 66% 34% / 39% 31% 69% 61% ;
+    }
+    10%{
+        border-radius: 15% 85% 12% 88% / 46% 35% 65% 54%  ;
+    }
+    20%{
+        border-radius: 43% 57% 36% 64% / 27% 50% 50% 73% ;
+    }
+    30%{
+        border-radius: 64% 36% 51% 49% / 20% 30% 70% 80%  ;
+    }
+    40%{
+        border-radius: 92% 8% 27% 73% / 48% 64% 36% 52%  ;
+    }
+    50%{
+        border-radius: 76% 24% 65% 35% / 22% 64% 36% 78%  ;
+    }
+    60%{
+        border-radius: 44% 56% 65% 35% / 14% 25% 75% 86%  ;
+    }
+    70%{
+        border-radius: 44% 56% 65% 35% / 46% 52% 48% 54%  ;
+    }
+    80%{
+        border-radius: 76% 24% 80% 20% / 46% 52% 48% 54%  ;
+    }
+    90%{
+        border-radius: 76% 24% 85% 15% / 25% 32% 68% 75%  ;
+    }
+    100%{
+        border-radius: 63% 37% 66% 34% / 39% 31% 69% 61% ;
+
+    }
+}
+@keyframes shadowanime {
+    0% {
+        box-shadow: 0 0 15px rgb(0, 146, 182);
+    }
+    25% {
+        box-shadow: 0 0 15px rgb(255, 5, 255);
+    }
+    50% {
+        box-shadow: 0 0 15px rgb(70, 0, 128);
+    }
+    75% {
+        box-shadow: 0 0 15px rgb(104, 248, 140)
+    }
+    100% {
+        box-shadow: 0 0 15px rgb(0, 146, 182);
+    }
+}
+.about{
+    height: 500px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.profecion1, .profecion2{
+    font-size: 1.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    background: -webkit-linear-gradient(#DD22CA, #5799F0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  overflow: hidden;
+}
+.profecion1{
+    width: 17ch;
+    animation: typing 3s steps(17);
+}
+.profecion2{
+    width: 20ch;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    animation: revealDown 3s ease-out forwards;
+    animation-delay: 3s;
+    display: block;
+}
+@keyframes typing {
+    from{
+        width: 0;
+    }
+}
+@keyframes revealDown {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+.skills{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
