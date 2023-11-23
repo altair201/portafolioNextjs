@@ -25,7 +25,7 @@ export default function App() {
   ];
 
   return (
-    <Navbar className={mode ? 'dark bg-black': '' } onMenuOpenChange={setIsMenuOpen}>
+    <Navbar className={mode ? 'dark bg-black absolute': 'absolute' } onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent className={style.prueba}>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}

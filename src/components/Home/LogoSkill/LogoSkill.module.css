@@ -55,3 +55,9 @@
 #redux {
     animation-delay: 1.7s;
 }
+@media screen and (max-width:500px) {
+    .containerLogo{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

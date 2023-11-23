@@ -6,13 +6,12 @@ import { Button } from '@nextui-org/react';
 import LogoSkill from './LogoSkill/LogoSkill'
 const Landing = () => {
     return (
-        <div className={style.containerHome}>
+        <div className={`pt-10 ${style.containerHome}`}>
             <div className={style.subcontainer}>
                 <div className={style.about}>
                     <div>
-                        <p className='text-cyan-500 font-bold text-4xl '>¡Hola! mi nombre es Davian Pabon (Altair200)</p>
+                        <p className='text-cyan-500 font-bold text-4xl w-full '>¡Hola! mi nombre es Davian Pabon (Altair200)</p>
                         <div className='flex'>
-                            <p className={style.profecion1}>Desarrollador Web</p>
                             <p className={style.profecion2}>Full Stack Developer</p>
                         </div>
                     </div>

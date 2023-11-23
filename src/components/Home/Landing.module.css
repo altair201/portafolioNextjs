@@ -1,5 +1,5 @@
 .containerHome{
-    height: 90vh;
+    height: 100vh;
     
 }
 .subcontainer{
@@ -7,8 +7,10 @@
     justify-content: center;
     align-items: center;
     height: 65vh;
+    gap:20px;
 }
 .photo{
+    display: block;
     height: 240px;
     width: 240px;
     overflow: hidden;
@@ -113,4 +115,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 50px;
+}
+@media screen and (max-width: 768px) {
+    .subcontainer{
+        flex-direction:column-reverse;
+        margin-top: 100px;
+    }
+    .about{
+        margin-top: 50px;
+    }
+}
+@media screen and (max-width:500px){
+    .subcontainer{
+        height: 100vh;
+        margin-top: 60px;
+    }
 }

@@ -5,7 +5,7 @@ import { useAppSelector } from '@/redux/hooks'
 export default function Home() {
   const darkMode = useAppSelector((state) => state.DarkModeSlice.darkMode);
   return (
-    <main className={darkMode ? 'dark bg-zinc-900 containerPrimary text-white' : 'containerPrimary'} >
+    <main className={darkMode ? 'dark bg-zinc-900 h-screen text-white' : 'h-screen'} >
       <Landing />
     </main>
   )
