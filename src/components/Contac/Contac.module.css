@@ -1,0 +1,52 @@
+.btnRedes{
+    animation: backg 10s linear infinite;
+}
+#github{
+    animation-delay: 0.1s;
+}
+#linkedin{
+    animation-delay: 0.7s;
+}
+#instagram{
+    animation-delay: 1.4s;
+}
+@keyframes backg {
+    0%{
+        background-color: rgba(4,245,97,1);
+    }
+    50%{
+        background-color: rgba(29,224,247,1) ;
+    }
+    100%{
+        background-color: rgba(4,245,97,1);
+    }
+}
+.contacEmail{
+    margin-top: 40px;
+    width: 50vw;
+    height: 350px;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 30px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #bebebe,
+               -15px -15px 30px #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    transition: 0.2s;
+}
+.contacEmail.dark {
+    background: #333333; /* Fondo oscuro */
+    color: #e0e0e0; /* Color de texto para fondo oscuro */
+    box-shadow: 15px 15px 30px #000000,
+               -15px -15px 30px #666666;
+    /* Otros estilos específicos para fondo oscuro */
+}
+@media screen and (max-width: 768px) {
+    .contacEmail{
+        width: 80vw;
+    }
+}

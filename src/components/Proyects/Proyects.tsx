@@ -1,7 +1,7 @@
 'use client'
 import { useGetProyectsQuery } from "@/redux/services/proyectsAPI";
 import Cards from "../Cards/Cards";
-import React from "react";
+import { SpinnerLoading } from "../Spinner/Spinner";
 
 const Proyect = (): React.ReactElement => {
     const { data, isLoading, error } = useGetProyectsQuery();
@@ -10,7 +10,7 @@ const Proyect = (): React.ReactElement => {
     return (
         <div className="flex flex-wrap justify-center gap-8 pt-20">
             {isLoading ? (
-                <div>Loading...</div>
+                <div><SpinnerLoading/></div>
             ) : (
                 data?.map((proyect: any) => (
                     <Cards
