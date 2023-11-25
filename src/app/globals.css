@@ -28,3 +28,8 @@ body {
 .containerPrimary{
   height: 90vh;
 }
+@media screen and (max-width: 767px) {
+  .containerDark{
+    height:200vh;
+  }
+} 

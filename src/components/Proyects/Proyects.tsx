@@ -8,7 +8,7 @@ const Proyect = (): React.ReactElement => {
     console.log(data);
 
     return (
-        <div className="flex flex-wrap justify-center gap-8 pt-20">
+        <div className="flex flex-wrap justify-center gap-8 pt-20 sm:h-auto">
             {isLoading ? (
                 <div><SpinnerLoading/></div>
             ) : (

@@ -5,7 +5,7 @@ import { useAppSelector } from '@/redux/hooks'
 const ProyectPage = () => {
     const darkMode = useAppSelector((state) => state.DarkModeSlice.darkMode);
     return (
-        <main className={darkMode ? 'dark bg-zinc-900 h-screen' : 'containerPrimary'}>
+        <main className={darkMode ? 'dark bg-zinc-900 h-screen containerDark' : 'containerPrimary'}>
             <Proyect/>
 
         </main>
