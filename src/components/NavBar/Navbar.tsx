@@ -19,9 +19,9 @@ export default function App() {
   
 
   const menuItems = [
-    "inicio",
-    "Proyectos",
-    "contacto",
+    {label:"inicio", value:"/"},
+    {label:"Proyectos", value:"/proyect"},
+    {label:"contacto", value:"/contac"},
   ];
 
   return (
@@ -70,15 +70,13 @@ export default function App() {
       </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem key={`${item.label}-${index}`}>
             <Link
-              color={
-                index === 2 ? "text-teal-400" : ''
-              }
-              className="w-full"
-              href="#"
+              
+              className={item.label === "Proyectos" ? "text-cyan-400 w-full" : 'w-full'}
+              href={item.value}
             >
-              {item}
+              {item.label}
             </Link>
           </NavbarMenuItem>
         ))}
