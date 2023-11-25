@@ -24,7 +24,7 @@ const Landing = (): React.ReactElement => {
                     <p>
                         ¡Hola! Soy un apasionado desarrollador Full Stack con un amor por la programación. He adquirido habilidades desde el front-end hasta el back-end, incluyendo JavaScript, HTML, CSS, React, Redux, Git, Node.js, Express, SQL y Sequelize. Siempre estoy ávido de conocimiento y continuamente busco nuevas tecnologías para dominar. Cada día veo la oportunidad de superarme y crecer.
                     </p>
-                    <Button color="primary" variant='flat' className=''>
+                    <Button color="primary" variant='shadow' className=''>
                         {
                             isLoading?(<div>Cargando...</div>):(<Link href={data as string} download >Ver CV</Link>)
                         }
