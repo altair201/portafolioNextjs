@@ -7,9 +7,9 @@ type FormData = {
 };
 
 export const EmailSend = ({ form }: { form: FormData }) => {
-  const serviceId = process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID;
-  const templateId = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID;
-  const apiKey = process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY;
+  const serviceId = process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string;
+  const templateId = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string;
+  const apiKey = process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY as string;
   
   const formElement = document.createElement("form");
   formElement.innerHTML = `
