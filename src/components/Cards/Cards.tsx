@@ -13,7 +13,6 @@ interface Proyect{
 }
  const Cards =({Proyect}:{Proyect:Proyect}): React.JSX.Element=> {
   const {name, description, image, ldeploy, lgithub} = Proyect;
-  console.log(ldeploy)
 
   return (
     <Card

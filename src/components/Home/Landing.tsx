@@ -8,6 +8,8 @@ import { useGetpdfcvQuery } from '@/redux/services/pdfcvAPI';
 import Link from 'next/link';
 const Landing = (): React.ReactElement => {
     const { data, isLoading, error } = useGetpdfcvQuery();
+    
+    
 
     return (
         <div className={`pt-10 ${style.containerHome}`}>
@@ -24,7 +26,7 @@ const Landing = (): React.ReactElement => {
                     </p>
                     <Button color="primary" variant='flat' className=''>
                         {
-                            isLoading?(<div>Cargando...</div>):(<Link href={data?.curriculum} download>Ver CV</Link>)
+                            isLoading?(<div>Cargando...</div>):(<Link href={data as string} download >Ver CV</Link>)
                         }
                     </Button>
 
