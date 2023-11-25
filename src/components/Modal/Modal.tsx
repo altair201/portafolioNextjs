@@ -15,13 +15,13 @@ export const ModalComponent = ({ open }: { open: open }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     useEffect(() => {
-        if (open.open||open.openII) {
+        if (open.open || open.openII) {
             onOpen();
+            setTimeout(() => {
+                onClose();
+            }, 2000);
         }
-        setTimeout(() => {
-            return onClose()
-        }, 2000);
-    }, [open.open, open.openII]);
+    }, [open.open, open.openII, onClose, onOpen]);
 
     return (
         <>

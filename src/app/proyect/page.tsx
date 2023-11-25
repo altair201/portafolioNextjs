@@ -2,7 +2,7 @@
 import Proyect from "@/components/Proyects/Proyects";
 import { useAppSelector } from '@/redux/hooks'
 
-const proyect = () => {
+const ProyectPage = () => {
     const darkMode = useAppSelector((state) => state.DarkModeSlice.darkMode);
     return (
         <main className={darkMode ? 'dark bg-zinc-900 h-screen' : 'containerPrimary'}>
@@ -11,4 +11,4 @@ const proyect = () => {
         </main>
     )
 };
-export default proyect;
+export default ProyectPage;
