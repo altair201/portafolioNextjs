@@ -11,7 +11,6 @@ type open={
     openII:boolean
 }
 export const ModalComponent = ({ open }: { open: open }) => {
-    console.log(open);
     const mode = useAppSelector((state)=>state.DarkModeSlice.darkMode)
     const { isOpen, onOpen, onClose } = useDisclosure();
 
