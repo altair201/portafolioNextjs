@@ -25,11 +25,11 @@ export default function App() {
   ];
 
   return (
-    <Navbar className={mode ? 'dark bg-black absolute': 'absolute' } onMenuOpenChange={setIsMenuOpen}>
+    <Navbar className={mode ? 'dark bg-black absolute ': 'absolute' } onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent className={style.prueba}>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
+          className="sm:hidden dark:text-white text-black"
         />
         <NavbarBrand>
           <Image src={logo} className="w-36
