@@ -4,7 +4,11 @@ import Image from "next/image";
 import perfil from '../../public/perfilAltair.jpg'
 import { Button } from '@nextui-org/react';
 import LogoSkill from './LogoSkill/LogoSkill'
-const Landing = () => {
+import { useGetpdfcvQuery } from '@/redux/services/pdfcvAPI';
+import Link from 'next/link';
+const Landing = (): React.ReactElement => {
+    const { data, isLoading, error } = useGetpdfcvQuery();
+
     return (
         <div className={`pt-10 ${style.containerHome}`}>
             <div className={style.subcontainer}>
@@ -19,7 +23,9 @@ const Landing = () => {
                         ¡Hola! Soy un apasionado desarrollador Full Stack con un amor por la programación. He adquirido habilidades desde el front-end hasta el back-end, incluyendo JavaScript, HTML, CSS, React, Redux, Git, Node.js, Express, SQL y Sequelize. Siempre estoy ávido de conocimiento y continuamente busco nuevas tecnologías para dominar. Cada día veo la oportunidad de superarme y crecer.
                     </p>
                     <Button color="primary" variant='flat' className=''>
-                        Descargar CV
+                        {
+                            isLoading?(<div>Cargando...</div>):(<Link href={data?.curriculum} download>Ver CV</Link>)
+                        }
                     </Button>
 
                 </div>
@@ -34,7 +40,7 @@ const Landing = () => {
             <div className={style.skills}>
                 <p className='text-cyan-500 font-bold text-2xl pb-5'>Skills</p>
                 <div>
-                    <LogoSkill/>
+                    <LogoSkill />
                 </div>
             </div>
         </div>

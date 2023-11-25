@@ -6,10 +6,10 @@ import { Button } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import { Textarea } from "@nextui-org/react";
 import style from "./Contac.module.css"
-import { useAppSelector } from "@/redux/hooks";
+import { useAppSelector,useAppDispatch } from "@/redux/hooks";
 import React, { useState } from 'react';
-import { Validacion } from "./Validacion/Validacion";
-import { log } from "console";
+import { EmailSend } from "@/redux/services/EmailSend";
+import { ModalComponent } from "../Modal/Modal";
 
 const Contac = () => {
     const darkMode = useAppSelector((state) => state.DarkModeSlice.darkMode)
@@ -18,30 +18,60 @@ const Contac = () => {
         textarea: '',
         error: false
     });
-    console.log(form.error);
+    const [open,setOpen]=useState<{open:boolean, openII:boolean}>({
+        open: false,
+        openII: false
+    })
     
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        console.log(event)
         const { name, value } = event.target;
         setForm(prevState => ({
             ...prevState,
-            [name]: value
+            [name]: value,
+            error: name === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
         }));
-        if (name === 'email') {
-            const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-            if (!isValidEmail) {
-                setForm({
-                    ...form,
-                    error: true
-                })
-            }else{
-                setForm({
-                    ...form,
-                    error:false
-                })
-            }
-        }
     };
+    const handleChange =async()=>{
+        const formData = {
+            form: {
+              email: form.email,
+              textarea: form.textarea,
+              error: form.error,
+            }
+          };
+        
+          try {
+            if(form.email !== ""){
+                const response = await EmailSend(formData);
+                if(response==="OK"){
+                    setOpen({
+                        ...open,
+                        open:true
+                    })
+                    setTimeout(() => {
+                        setOpen({
+                            ...open,
+                            open:false
+                        })
+                    }, 2050);
+                }
+            }else{
+                setOpen({
+                    ...open,
+                    openII:true
+                })
+                setTimeout(() => {
+                    setOpen({
+                        ...open,
+                        openII:false
+                    })
+                }, 2000);
+            }
+            
+          } catch (error) {
+            console.error("Error al enviar el correo:", error);
+          }
+    }
     return (
         <div className=" h-3/4 flex flex-col items-center justify-center  gap-4 pt-24">
             <p className="text-cyan-500 font-bold text-3xl">Contactame</p>
@@ -72,9 +102,10 @@ const Contac = () => {
                         name="textarea"
                         onChange={handleInputChange}
                     />
-                    <Button color="secondary" variant="shadow">
+                    <Button color="secondary" variant="shadow" onClick={handleChange}>
                         Enviar
                     </Button>
+                    <ModalComponent open={open}  />
                 </div>
             </div>
         </div>

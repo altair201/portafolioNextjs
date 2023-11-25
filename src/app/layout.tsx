@@ -1,8 +1,11 @@
-'use client'
+import type { Metadata } from "next";
 import './globals.css'
 import NavBar from '../components/NavBar/Navbar'
 import { Providers } from '@/redux/providers'
 
+export const metadata: Metadata = {
+  title: "Portafolio",
+};
 export default function RootLayout({
   children,
 }: {
@@ -10,6 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      
       <Providers >
         <body >
           <NavBar />
