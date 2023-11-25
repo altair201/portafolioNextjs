@@ -28,6 +28,12 @@ body {
 .containerPrimary{
   height: 90vh;
 }
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: white; /* Fondo blanco para anular el tema oscuro */
+    color: black; /* Texto negro para anular el tema oscuro */
+  }
+}
 @media screen and (max-width: 767px) {
   .containerDark{
     height:200vh;
