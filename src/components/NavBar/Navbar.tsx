@@ -9,27 +9,28 @@ import { Switch } from "@nextui-org/react";
 import { MoonIcon } from "./IconNav/MoonIcon";
 import { SunIcon } from "./IconNav/SunIcon";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import {toggleDarkMode} from "@/redux/features/DarkModeSlice";
+import { toggleDarkMode } from "@/redux/features/DarkModeSlice";
 
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
   const dispatch = useAppDispatch()
   const mode = useAppSelector((state) => state.DarkModeSlice.darkMode);
-  
+
 
   const menuItems = [
-    {label:"inicio", value:"/"},
-    {label:"Proyectos", value:"/proyect"},
-    {label:"contacto", value:"/contac"},
+    { label: "inicio", value: "/" },
+    { label: "Proyectos", value: "/proyect" },
+    { label: "contacto", value: "/contac" },
   ];
 
   return (
-    <Navbar className={mode ? 'dark bg-black absolute ': 'absolute' } onMenuOpenChange={setIsMenuOpen}>
+    <Navbar className={mode ? 'dark bg-black sm:absolute sticky ' : 'sm:absolute sticky'} isMenuOpen={isMenuOpen}
+    onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent className={style.prueba}>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden dark:text-white text-black"
+          className={"sm:hidden " + (mode ? "text-white" : "text-black")}
         />
         <NavbarBrand>
           <Image src={logo} className="w-36
@@ -52,7 +53,7 @@ export default function App() {
       </Switch>
       <NavbarContent className={`hidden sm:flex gap-4  ${style.prueba2}`} justify="center">
         <NavbarItem>
-          <Link className={mode? 'text-white': ''} href="/">
+          <Link className={mode ? 'text-white' : ''} href="/">
             Inicio
           </Link>
         </NavbarItem>
@@ -63,20 +64,25 @@ export default function App() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className={mode? 'text-white': ''} href="/contac">
+          <Link className={mode ? 'text-white' : ''} href="/contac">
             Contacto
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu>
+      <NavbarMenu className={mode ? "text-white bg-black" : "text-black"}>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.label}-${index}`}>
             <Link
-              
-              className={item.label === "Proyectos" ? "text-cyan-400 w-full" : 'w-full'}
+
+              className={item.label === "Proyectos" ? "text-cyan-400 w-full text-2xl" : 'w-full text-2xl'}
               href={item.value}
+
             >
-              {item.label}
+              <div
+                onClick={() => setIsMenuOpen(false)} 
+              >
+                {item.label}
+              </div>
             </Link>
           </NavbarMenuItem>
         ))}

@@ -5,14 +5,15 @@ import perfil from '../../public/perfilAltair.jpg'
 import { Button } from '@nextui-org/react';
 import LogoSkill from './LogoSkill/LogoSkill'
 import { useGetpdfcvQuery } from '@/redux/services/pdfcvAPI';
+import { useAppSelector } from '@/redux/hooks';
 import Link from 'next/link';
 const Landing = (): React.ReactElement => {
     const { data, isLoading, error } = useGetpdfcvQuery();
-    
+    const mode = useAppSelector((state) => state.DarkModeSlice.darkMode);
     
 
     return (
-        <div className={`pt-10 ${style.containerHome}`}>
+        <div className={`pt-10  ${mode ? 'bg-zinc-900 text-white sm:h-screen' : 'bg-gradient-to-b from-white to-950 to-gray-500 sm:h-screen'}`}>
             <div className={style.subcontainer}>
                 <div className={style.about}>
                     <div>

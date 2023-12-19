@@ -6,23 +6,27 @@ import { Button } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import { Textarea } from "@nextui-org/react";
 import style from "./Contac.module.css"
-import { useAppSelector,useAppDispatch } from "@/redux/hooks";
+import { useAppSelector } from "@/redux/hooks";
 import React, { useState } from 'react';
 import { EmailSend } from "@/redux/services/EmailSend";
 import { ModalComponent } from "../Modal/Modal";
 
 const Contac = () => {
     const darkMode = useAppSelector((state) => state.DarkModeSlice.darkMode)
-    const [form, setForm] = useState<{ email: string; textarea: string; error:boolean}>({
+    const [form, setForm] = useState<{ email: string; textarea: string; error: boolean }>({
         email: '',
         textarea: '',
         error: false
     });
-    const [open,setOpen]=useState<{open:boolean, openII:boolean}>({
+    const [open, setOpen] = useState<{ open: boolean, openII: boolean }>({
         open: false,
         openII: false
     })
-    
+    React.useEffect(() => {
+
+       
+
+    }, [open.open]);
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
         setForm(prevState => ({
@@ -31,46 +35,41 @@ const Contac = () => {
             error: name === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
         }));
     };
-    const handleChange =async()=>{
+    const handleChange = async () => {
         const formData = {
             form: {
-              email: form.email,
-              textarea: form.textarea,
-              error: form.error,
+                email: form.email,
+                textarea: form.textarea,
+                error: form.error,
             }
-          };
-        
-          try {
-            if(form.email !== ""){
+        };
+
+        try {
+            if (form.email !== "") {
                 const response = await EmailSend(formData);
-                if(response==="OK"){
+                if (response === "OK") {
                     setOpen({
                         ...open,
-                        open:true
-                    })
-                    setTimeout(() => {
-                        setOpen({
-                            ...open,
-                            open:false
-                        })
-                    }, 2050);
+                        open: true
+                    });
+                    setForm({ email: '', textarea: '', error: false });
                 }
-            }else{
+
+            } else {
                 setOpen({
                     ...open,
-                    openII:true
-                })
+                    openII: true
+                });
                 setTimeout(() => {
                     setOpen({
                         ...open,
-                        openII:false
-                    })
+                        openII: false
+                    });
                 }, 2000);
             }
-            
-          } catch (error) {
+        } catch (error) {
             console.error("Error al enviar el correo:", error);
-          }
+        }
     }
     return (
         <div className=" h-3/4 flex flex-col items-center justify-center  gap-4 pt-24">
@@ -90,9 +89,10 @@ const Contac = () => {
             <div>
                 <p className="text-cyan-500 font-bold text-2xl text-center">Correo</p>
                 <div className={`${darkMode ? style.dark : ""} ${style.contacEmail}`}>
-                    <Input type="email" color="primary" variant="underlined" name="email" label="Email" onChange={handleInputChange} 
-                    isInvalid={form.error}
-                        errorMessage={form.error?"Porfavor ingrese un email valido": ""}/>
+                    <Input type="email" color="primary" variant="underlined" name="email" label="Email" onChange={handleInputChange}
+                        isInvalid={form.error}
+                        value={form.email}
+                        errorMessage={form.error ? "Porfavor ingrese un email valido" : ""} />
                     <Textarea
                         variant="underlined"
                         label="Description"
@@ -100,12 +100,13 @@ const Contac = () => {
                         placeholder="Enter your description"
                         color="primary"
                         name="textarea"
+                        value={form.textarea}
                         onChange={handleInputChange}
                     />
                     <Button color="secondary" variant="shadow" onClick={handleChange}>
                         Enviar
                     </Button>
-                    <ModalComponent open={open}  />
+                    <ModalComponent open={open} />
                 </div>
             </div>
         </div>

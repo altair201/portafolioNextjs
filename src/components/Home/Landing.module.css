@@ -1,6 +1,6 @@
 .containerHome{
     height: 100vh;
-    
+    background-color: white;
 }
 .subcontainer{
     display: flex;
@@ -77,7 +77,7 @@
     justify-content: center;
     align-items: center;
 }
-.profecion1, .profecion2{
+.profecion2{
     font-size: 1.8rem;
     font-weight: 500;
     white-space: nowrap;
@@ -85,18 +85,12 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   overflow: hidden;
-}
-.profecion1{
-    width: 17ch;
-    animation: typing 3s steps(17);
-}
-.profecion2{
-    width: 20ch;
+  width: 20ch;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     animation: revealDown 3s ease-out forwards;
-    animation-delay: 3s;
     display: block;
 }
+
 @keyframes typing {
     from{
         width: 0;
